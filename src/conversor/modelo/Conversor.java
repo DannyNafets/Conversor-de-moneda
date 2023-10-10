@@ -1,5 +1,7 @@
 package conversor.modelo;
 
+import java.text.DecimalFormat;
+
 import javax.swing.JOptionPane;
 
 public class Conversor {
@@ -10,10 +12,10 @@ public class Conversor {
 	protected double voltiosDbv;
 	protected double voltiosDbu;
     
-    public void conversion(String moneda, double valorOtraMoneda, double valorColombia) {
-        this.resultadoConversion = (Math.round((valorColombia * valorOtraMoneda) * 100)) / 100d;
-        JOptionPane.showMessageDialog(null, resultadoConversion + " " + moneda );
-
+    public double conversion(String moneda, double valorOtraMoneda, double valorColombia) {
+        this.resultadoConversion = valorColombia * valorOtraMoneda;
+        JOptionPane.showMessageDialog(null, formatearResultado(resultadoConversion) + " " + moneda );
+        return this.resultadoConversion;
     }
     
     public double getResultadoConversion() {
@@ -54,5 +56,10 @@ public class Conversor {
     
     public double getVoltiosDbu() {
 		return voltiosDbu;
+	}
+    
+    public String formatearResultado(double resultado) {
+		DecimalFormat formato = new DecimalFormat("#.##");
+		return formato.format(resultado);
 	}
 }

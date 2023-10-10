@@ -5,8 +5,9 @@ package conversor.modelo;
 public class ConversorApp extends Conversor {
 	
 	@Override
-	public void conversion(String moneda, double valorOtraMoneda, double valorColombia) {
-		super.resultadoConversion = (Math.round((valorColombia * valorOtraMoneda)*10.0))/10.0;
+	public double conversion(String moneda, double valorOtraMoneda, double valorColombia) {
+		super.resultadoConversion = valorColombia * valorOtraMoneda;
+		return super.resultadoConversion;
 	}
 	
 	@Override
